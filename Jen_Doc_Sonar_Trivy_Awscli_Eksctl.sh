@@ -17,7 +17,7 @@ sudo systemctl start jenkins -y
 echo "Installing awscli.............."
 sudo curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 sudo apt-get install unzip -y
-sudo ./aws/install
+./aws/install
 unzip awscliv2.zip
 
 # install trivy
@@ -38,10 +38,14 @@ eksctl version
 echo "Installing Docker.............."
 sudo apt-get update
 sudo apt-get install docker.io -y
-sudo usermod -aG docker ubuntu
-newgrp docker
 sudo chmod 777 /var/run/docker.sock
+sudo usermod -aG docker $HOME
+sudo usermod -aG docker jenkins
+sudo systemctl restart jenkins
+newgrp docker
 docker -v
+
+# Installing Sonarqube
 echo "Running Sonarqube container.............."
 sudo docker run -d --name sonar -p 9000:9000 sonarqube:lts-community
 
