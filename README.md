@@ -1,26 +1,25 @@
 # Here i have placed all excutables file to install the daily use tools in DevOps.
-This repository contains a collection of shell scripts for automating various cloud-related tasks.
+# This repository contains a collection of shell scripts for automating various cloud-related tasks.
 
-Here's a breakdown of the scripts:
+## Here's a breakdown of the scripts:
 
-AWS Related:
+## AWS Related:
+- AWSCLI_Install.sh: Installs the AWS CLI.
+- EKSCTL_Install.sh: Installs the EKSCTL command-line tool (likely outdated based on recent update messages).
+- Backup_script.sh: Script for backups (details unknown, requires first commit reference for info).
+- Database_backup.sh: Script for database backups (details unknown, requires first commit reference for info).
+- ... (other AWS scripts)
 
-AWSCLI_Install.sh: Installs the AWS CLI.
-EKSCTL_Install.sh: Installs the EKSCTL command-line tool (likely outdated based on recent update messages).
-Backup_script.sh: Script for backups (details unknown, requires first commit reference for info).
-Database_backup.sh: Script for database backups (details unknown, requires first commit reference for info).
-... (other AWS scripts)
-General DevOps Tools:
+## General DevOps Tools:
+- Ansible_install.sh: Installs Ansible (likely outdated based on recent update messages).
+- Helm_install.sh: Installs Helm (likely outdated based on recent update messages).
+- Docker_install.sh: Installs Docker.
+- Docker_Scout.sh: Possibly a Docker container analysis tool (details unknown).
+- GCP_Cloud_install.sh: Script for Google Cloud Platform setup (likely outdated based on recent update messages).
+- Grafana_DashboardInstall.sh: Installs a Grafana dashboard (details unknown, requires first commit reference for info).
+- ... (other DevOps tool scripts)
 
-Ansible_install.sh: Installs Ansible (likely outdated based on recent update messages).
-Helm_install.sh: Installs Helm (likely outdated based on recent update messages).
-Docker_install.sh: Installs Docker.
-Docker_Scout.sh: Possibly a Docker container analysis tool (details unknown).
-GCP_Cloud_install.sh: Script for Google Cloud Platform setup (likely outdated based on recent update messages).
-Grafana_DashboardInstall.sh: Installs a Grafana dashboard (details unknown, requires first commit reference for info).
-... (other DevOps tool scripts)
-Kubernetes Related:
-
+## Kubernetes Related:
 EKS_CLUSTER.sh (likely outdated based on recent update messages) and other scripts with "EKS" in the name likely deal with managing EKS clusters.
 KUBECTL_Install.sh: Installs kubectl.
 Kubeadm_Setup.sh: Possibly a script for setting up a Kubeadm cluster (details unknown).
