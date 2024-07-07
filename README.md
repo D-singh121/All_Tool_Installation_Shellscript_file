@@ -4,7 +4,7 @@
 ## Here's a breakdown of the scripts:
 
 ## AWS Related:
-- ``` json AWSCLI_Install.sh: ``` Installs the AWS CLI.
+- ``` AWSCLI_Install.sh: ``` Installs the AWS CLI.
 - EKSCTL_Install.sh: Installs the EKSCTL command-line tool (likely outdated based on recent update messages).
 - Backup_script.sh: Script for backups (details unknown, requires first commit reference for info).
 - Database_backup.sh: Script for database backups (details unknown, requires first commit reference for info).
