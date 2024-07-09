@@ -63,15 +63,14 @@ sudo chown "$(id -u)":"$(id -g)" "$HOME"/.kube/config
 
 # Network Plugin = calico
 kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.26.0/manifests/calico.yaml
-
 kubeadm token create --print-join-command
 
 
 # ---------------------------------------------------------////--------------------------------------------------------------
-# ----------------///-------------------------------------------------------------------------------------------------------
 # Execute on ALL of your Worker Node's:
 # Perform pre-flight checks: 
-# sudo kubeadm reset pre-flight checks
+sudo kubeadm reset pre-flight checks
 
+# ---------------------------------------------------------////--------------------------------------------------------------
 # Paste the join command you got from the master node and append --v=5 at the end.
 # sudo your-token --v=5
