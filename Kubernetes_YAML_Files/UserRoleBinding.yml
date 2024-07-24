@@ -1,0 +1,16 @@
+# This template defines a UserRoleBinding to associate a user with a least privilege Role within a namespace
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: UserRoleBinding
+metadata:
+  name: <userrolebinding-name> # Replace with a descriptive name for the user role binding
+  namespace: <target-namespace> # Replace with the namespace where the user will have access
+
+subjects:
+  - kind: User
+    name: <username> # Replace with the username for the user account
+
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: <role-name> # Reference the Role within the namespace (from role-template.yaml)

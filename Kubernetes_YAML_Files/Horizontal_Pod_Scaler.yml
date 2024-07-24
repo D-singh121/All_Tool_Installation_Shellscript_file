@@ -1,0 +1,29 @@
+# This template defines a Horizontal Pod Autoscaler (HPA) for production use
+apiVersion: apps/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: <hpa-name> # Replace with a descriptive name for your HPA
+spec:
+  # Reference the target resource (Deployment or ReplicaSet) to autoscale
+  scaleTargetRef:
+    apiVersion: apps/v1 # Adjust for ReplicaSets (extensions/v1beta1)
+    kind: Deployment # Adjust for ReplicaSets (ReplicaSet)
+    name: <target-deployment-name> # Replace with the actual deployment name
+
+  # Minimum number of pods to scale down to (optional)
+  minReplicas: <min-replicas> # Replace with the minimum desired pod count (optional)
+
+  # Maximum number of pods to scale up to
+  maxReplicas: <max-replicas> # Replace with the maximum desired pod count
+
+  # Define metrics for autoscaling
+  metrics:
+    # Target CPU utilization based on pods (adjust based on your needs)
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: <target-cpu-utilization> # Replace with desired average CPU utilization (e.g., 80)
+    # You can add additional metrics here for combined scaling decisions (optional)
+    # - type: ...

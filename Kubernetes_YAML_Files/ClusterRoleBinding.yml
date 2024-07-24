@@ -1,0 +1,15 @@
+# This template defines a (restricted) ClusterRoleBinding for a Service Account with limited ClusterRole access
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: <clusterrolebinding-name> # Replace with a descriptive name for the cluster role binding
+
+subjects:
+  - kind: ServiceAccount
+    name: <service-account-name> # Reference the service account (from serviceaccount-template.yaml)
+
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: <clusterrole-name> # Reference the ClusterRole (replace with the actual cluster role name)

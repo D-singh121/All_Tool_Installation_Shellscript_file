@@ -1,0 +1,36 @@
+# This template defines a Vertical Pod Autoscaler (VPA) for production use
+
+apiVersion: autoscaling.k8s.io/v2beta2
+kind: VerticalPodAutoscaler
+metadata:
+  name: <vpa-name> # Replace with a descriptive name for your VPA
+spec:
+  # Reference the target resource (Deployment or ReplicaSet) to autoscale
+  targetRef:
+    apiVersion: apps/v1 # Adjust for ReplicaSets (extensions/v1beta1)
+    kind: Deployment # Adjust for ReplicaSets (ReplicaSet)
+    name: <target-deployment-name> # Replace with the actual deployment name
+
+  # Update mode (specify how VPA updates resource requests/limits)
+  updatePolicy:
+    updateMode: Auto # Recommended for production (automatic updates)
+    # Alternatively, you can use 'Off' for manual updates
+
+  # Metrics to monitor for autoscaling (memory is common for VPA)
+  metrics:
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: <target-memory-utilization> # Replace with desired average memory utilization (e.g., 80)
+
+  # Minimum resources (enforce minimum requests and limits)
+  minResources:
+    memory: <minimum-memory-request> # Set minimum memory request
+
+  # Recommended: Initial resources to start with before autoscaling
+  # (consider application startup needs)
+  resources:
+    memory: <initial-memory-request> # Set initial memory request
+

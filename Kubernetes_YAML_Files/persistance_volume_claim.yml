@@ -1,0 +1,13 @@
+# This template defines a Persistent Volume Claim to request storage from a StorageClass
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: <pvc-name> # Replace with a descriptive name for your PVC
+spec:
+  accessModes:
+    - ReadWriteOnce # Access mode (e.g., ReadWriteOnce, ReadWriteMany, ReadOnlyMany)
+  resources:
+    requests:
+      storage: 1Gi # Desired storage capacity
+  storageClassName: <storage-class-name> # Reference the desired StorageClass

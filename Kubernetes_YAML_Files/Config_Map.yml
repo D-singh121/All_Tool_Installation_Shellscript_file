@@ -1,0 +1,9 @@
+# This template defines a ConfigMap for storing non-sensitive configuration data
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: <configmap-name> # Replace with a descriptive name for your config map
+data:
+  <key1>: <value1>
+  <key2>: <value2>
+  # ... (add more key-value pairs as needed)

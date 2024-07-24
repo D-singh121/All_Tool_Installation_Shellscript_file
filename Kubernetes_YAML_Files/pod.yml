@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: <pod-name> # Replace with your desired pod name
+  labels: # Optional labels for filtering and RBAC
+    app: <your-app-name> # Add your labels here (e.g., app: my-app)
+spec:
+  containers:
+    - name: <container-name>
+      image: <image-name>:<tag> # Replace with the image you want to run
+      ports: # Optional: Define ports exposed by the container
+        - containerPort: <port-number>
+          name: <port-name> # Optional: Define a name for the port
+
+      env: # Optional: Define environment variables for the container
+        - name: <env-var-name>
+          value: "<env-var-value>"
+
+      resources: # Optional: Define resource requests and limits for the container
+        requests:
+          memory: "1Gi"
+          cpu: "1"
+        limits:
+          memory: "2Gi"
+          cpu: "2"
+
+      volumeMounts: # Optional: Define volume mounts for the container
+        - name: <volume-name>
+          mountPath: /<path/in/container>
+
+  volumes: # Optional: Define volumes for the pod (persistent storage)
+    - name: <volume-name>
+      # Choose the desired persistent storage type (e.g., emptyDir, hostPath, persistentVolumeClaim)
+      <persistent-storage-type>:
+        # Additional options depending on the chosen storage type
+        # (e.g., path for hostPath, claimName for persistentVolumeClaim)

@@ -1,0 +1,33 @@
+# This template defines a Persistent Volume for production using a StorageClass
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: <pv-name> # Replace with a descriptive name for your PV
+
+# No hostPath definition - we'll use a StorageClass for dynamic provisioning
+
+spec:
+  capacity:
+    storage: 1Gi # Desired storage capacity
+  accessModes:
+    - ReadWriteOnce # Access mode (e.g., ReadWriteOnce, ReadWriteMany, ReadOnlyMany)
+  persistentVolumeReclaimPolicy: Retain # Retain storage even after PV becomes unbound
+
+# Reference the desired StorageClass for dynamic provisioning
+storageClassName: <storage-class-name> # Replace with the name of your existing StorageClass
+
+---
+# This template defines a StorageClass for provisioning persistent volumes with a chosen storage provider
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: <storage-class-name> # Name for your StorageClass
+
+provisioner: <storage-provisioner> # Replace with the appropriate provisioner for your storage provider
+parameters: # Parameters for the provisioner
+  # Replace these placeholders with provider-specific parameters
+  type: # Define the storage type based on your provider (e.g., gp2 for AWS EBS)
+  # Optional: Define additional parameters like filesystem type, IOPS, etc.
+  # fsType: ext4  # Example: Filesystem type (e.g., ext4)
+  # iopsPerGB: 100  # Example: IOPS per Gigabyte

@@ -1,0 +1,15 @@
+# This template defines a Kubernetes Service for exposing your application
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: <service-name> # Replace with a descriptive name for your service
+spec:
+  selector:
+    app: <selector-value> # Replace with pod selection criteria (e.g., app: <your-app-name>)
+  ports:
+    - protocol: TCP # Protocol (typically TCP)
+      port: <service-port> # Port on which the service will be exposed externally (e.g., 80 for HTTP)
+      targetPort: <container-port> # Port on which the pods are listening (e.g., 8080 for a web server)
+  type: <service-type> # Choose the desired service type (e.g., ClusterIP, NodePort, LoadBalancer)
+

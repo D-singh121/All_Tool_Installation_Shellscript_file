@@ -1,0 +1,64 @@
+apiVersion: apps/v1 # Kubernetes API version for deployments
+kind: Deployment # rename to StateFullSet for state handling or for simple deployment remove volumes and other state things.
+metadata:
+  name: <deployment-name> # Name of the deployment (replace with your desired name)
+  # Optional labels for filtering and RBAC (add your labels here)
+  labels:
+    # e.g., app: my-app
+spec:
+  replicas: 2 # Number of pod replicas to run (minimum 1)
+  selector: # Selector for pods to manage
+    matchLabels:
+      app: <pod-name> # Match pods with label "app" set to the deployment name
+  template: # Pod template used for deployment
+    metadata:
+      labels: # Labels for pods created by the deployment
+        app: <pod-name> # Match the deployment name
+      # Optional annotations for pods (e.g., deployment version)
+    spec:
+      containers:
+        - name: <container-name> # Name for the container running inside the pod
+          image: <image-name>:<tag> # Image to run (replace with the image you want to run) # Tag defaults to "latest" if not provided
+          # Optional: Define exposed ports
+          ports:
+            - containerPort: <port-number>
+              # Optional: Name for the exposed port
+              name: <port-name>
+          # Optional: Define environment variables
+          env:
+            - name: <env-var-name>
+              value: "<env-var-value>"
+          # Liveness probe to restart unhealthy containers (customize as needed)
+          livenessProbe:
+            httpGet: # Perform an HTTP GET request
+              path: / # Path to the application health check endpoint (replace if needed)
+              port: <port-number> # Port where the health check endpoint is listening
+            initialDelaySeconds: 15 # Wait 15 seconds before starting the probe (optional)
+            periodSeconds: 20 # Perform the probe every 20 seconds
+            failureThreshold: 3 # Restart the container if the probe fails 3 times consecutively
+          # Readiness probe to determine when pods are ready for traffic (customize as needed)
+          readinessProbe:
+            httpGet: # Perform an HTTP GET request
+              path: / # Path to the application readiness check endpoint (replace if needed)
+              port: <port-number> # Port where the readiness check endpoint is listening
+            initialDelaySeconds: 5 # Wait 5 seconds before starting the probe (optional)
+            periodSeconds: 10 # Perform the probe every 10 seconds
+            failureThreshold: 2 # Mark the pod as unready if the probe fails 2 times consecutively
+          # Optional: Define resource requests and limits
+          resources:
+            requests:
+              memory: "1Gi" # Memory request
+              cpu: "1" # CPU request
+            limits:
+              memory: "2Gi" # Memory limit
+              cpu: "2" # CPU limit
+          # Optional: Define volume mounts
+          volumeMounts:
+            - name: <volume-name>
+              mountPath: /<path/in/container> # Path where volume mounts in container
+      # Optional: Define volumes for persistent storage
+      volumes:
+        - name: <volume-name>
+          # Choose the desired persistent storage type (e.g., emptyDir, hostPath, persistentVolumeClaim)
+          persistentVolumeClaim:
+            claimName: <pvc-name> # Name of the existing PVC

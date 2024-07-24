@@ -1,0 +1,34 @@
+# This template defines a ServiceAccount for your application with Namespaces limited
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: <service-account-name> # Replace with a descriptive name for your service account
+  namespace: <target-namespace> # Replace with the namespace where the service account will be used
+
+---
+# This template defines a Role for granting least privilege access within the cluster
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: <role-name> # Replace with a descriptive name for the role
+rules:
+  # Grant only the minimum required verbs and resources for your application's functionality
+  - apiGroups: ["apps"] # Example: Access to apps API group (adjust based on your needs)
+    resources: ["deployments"] # Example: Access to deployments within the API group (adjust based on your needs)
+    verbs: ["get", "list", "watch"] # Example: Allow get, list, and watch operations (adjust based on your needs)
+  # You can add additional rules for specific access control needs, following least privilege
+
+---
+# This template defines a RoleBinding to associate a Namespaced Service Account with a Role
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: <rolebinding-name> # Replace with a descriptive name for the role binding
+subjects:
+  - kind: ServiceAccount
+    name: <service-account-name> # Reference the service account (from serviceaccount-template.yaml)
+    namespace: <target-namespace> # Reference the same namespace as the ServiceAccount
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: <role-name> # Reference the role (from role-template.yaml)
