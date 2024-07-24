@@ -21,9 +21,9 @@
 
 ## Network Information:-------------------------------------------------------------------------------------------------
 
-**``` ifconfig ``` ** : This is a traditional command that displays information about your network interfaces, including IP addresses, subnet masks, and MAC addresses. However, for newer systems, ip addr is recommended.
-** ``` ip addr show ```** : This command offers a more detailed view of network interfaces and their configuration. It's a good alternative to ifconfig.
-** ```netstat -a ``` ** : This command lists all active network connections, including listening and established connections.
+- ``` ifconfig ``` : This is a traditional command that displays information about your network interfaces, including IP addresses, subnet masks, and MAC addresses. However, for newer systems, ip addr is recommended.
+- ``` ip addr show ```: This command offers a more detailed view of network interfaces and their configuration. It's a good alternative to ifconfig.
+- ```netstat -a ``` : This command lists all active network connections, including listening and established connections.
 
 # All IN ONE:-------------------------------------------------------------------------------------------------------------------
 - ``` uname -a ```
