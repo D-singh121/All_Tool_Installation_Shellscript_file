@@ -23,7 +23,7 @@
 - ``` Splunk_Install.sh```  (likely outdated based on recent update messages): Installs Splunk.
 - ``` Terraform_Install.sh```  (likely outdated based on recent update messages): Installs Terraform.
 - ``` Trivy_Install.sh:```  Installs Trivy (possibly a vulnerability scanner).
-- ``` Uninstan_Docker.sh ``` (changes made last week): Script for uninstalling Docker (details unknown).
+- ``` Uninstall_Docker.sh ``` (changes made last week): Script for uninstalling Docker (details unknown).
 - ``` GCP_Cloud_install.sh: ``` Script for Google Cloud Platform setup (likely outdated based on recent update messages).
 - ``` Grafana_DashboardInstall.sh:```  Installs a Grafana dashboard (details unknown, requires first commit reference for info).
 - ``` ... (other DevOps tool scripts)``` 
