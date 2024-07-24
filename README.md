@@ -28,7 +28,7 @@
 - ``` Grafana_DashboardInstall.sh:```  Installs a Grafana dashboard (details unknown, requires first commit reference for info).
 - ``` ... (other DevOps tool scripts)``` 
 
-## Kubernetes Related:
+## Kubernetes Related:---------  Also Added compleate K8s yaml files for all usecase.
 - ``` EKS_CLUSTER.sh ``` (likely outdated based on recent update messages) and other scripts with "EKS" in the name likely deal with managing EKS clusters.
 - ``` KUBECTL_Install.sh:```  Installs kubectl.
 - ``` Kubeadm_Setup.sh:```  Possibly a script for setting up a Kubeadm cluster (details unknown).
