@@ -73,4 +73,4 @@ sudo kubeadm reset pre-flight checks
 
 # ---------------------------------------------------------////--------------------------------------------------------------
 # Paste the join command you got from the master node and append --v=5 at the end.
-# sudo your-token --v=5
+sudo your-token --v=5
