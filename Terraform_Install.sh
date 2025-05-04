@@ -1,26 +1,33 @@
 #!/bin/bash
-sudo apt-get update && sudo apt-get install -y gnupg software-properties-common
+# sudo apt-get update && sudo apt-get install -y gnupg software-properties-common
 
-# Install the HashiCorp GPG key.
-wget -O- https://apt.releases.hashicorp.com/gpg | \
-gpg --dearmor | \
-sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg > /dev/null
+# # Install the HashiCorp GPG key.
+# wget -O- https://apt.releases.hashicorp.com/gpg | \
+# gpg --dearmor | \
+# sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg > /dev/null
 
-# Verify the key's fingerprint.
-gpg --no-default-keyring \
---keyring /usr/share/keyrings/hashicorp-archive-keyring.gpg \
---fingerprint
+# # Verify the key's fingerprint.
+# gpg --no-default-keyring \
+# --keyring /usr/share/keyrings/hashicorp-archive-keyring.gpg \
+# --fingerprint
 
-# Add the official HashiCorp repository to your system
-echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] \
-https://apt.releases.hashicorp.com $(lsb_release -cs) main" | \
-sudo tee /etc/apt/sources.list.d/hashicorp.list
+# # Add the official HashiCorp repository to your system
+# echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] \
+# https://apt.releases.hashicorp.com $(lsb_release -cs) main" | \
+# sudo tee /etc/apt/sources.list.d/hashicorp.list
 
-# update packages and install terraform.
-sudo apt update
-sudo apt-get install terraform -y
+# # update packages and install terraform.
+# sudo apt update
+# sudo apt-get install terraform -y
+# terraform -v
+
+
+##--------------------- Updated installation commands for debian ubuntu os  as per 2025 -----------------------------##
+sudo apt-get update -y
+wget -O - https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+sudo apt update && sudo apt install terraform
 terraform -v
-
 
 # ## terraform basic commands;
 # # create the " .tf " file then follow below steps.
